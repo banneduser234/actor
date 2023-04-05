@@ -44,7 +44,7 @@ export default function Acteur()
                                     New comments
                                     </label>{' '}
                                     <span id="comments-description" className="text-gray-500">
-                                    <span className="sr-only">New comments </span>so you always know what's happening.
+                                    <span className="sr-only">New comments </span>so you always know what&apos;s happening.
                                     </span>
                                 </div>
                                 </div>
