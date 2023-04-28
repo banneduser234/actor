@@ -44,9 +44,6 @@
                                             Nom
                                         </th>
                                         <th scope="col" className="px-4 py-3.5 text-left text-sm font-semibold text-gray-900">
-                                            Prenom
-                                        </th>
-                                        <th scope="col" className="px-4 py-3.5 text-left text-sm font-semibold text-gray-900">
                                             Nationalite
                                         </th>
                                         <th scope="col" className="py-3.5 pl-4 pr-4 text-left text-sm font-semibold text-gray-900 sm:pr-0">
@@ -57,9 +54,8 @@
                                 <tbody className="divide-y divide-gray-200 bg-white">
                                     <tr v-for="res in searchRes" :key="res.id" className="divide-x divide-gray-200">
                                         <td className="whitespace-nowrap py-4 pl-4 pr-4 text-sm font-medium text-gray-900 sm:pl-0">
-                                       {{  res.last_name }}
+                                       {{  res.last_name }} {{ res.first_name }}
                                         </td>
-                                        <td className="whitespace-nowrap p-4 text-sm text-gray-500">{{ res.first_name }}</td>
                                         <td className="whitespace-nowrap p-4 text-sm text-gray-500">{{ res.nationality }}</td>
                                         <td className="whitespace-nowrap py-4 pl-4 pr-4 text-sm text-gray-500 sm:pr-0">{{ res.phone }}</td>
                                     </tr>

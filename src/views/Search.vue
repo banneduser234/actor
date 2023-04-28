@@ -74,7 +74,7 @@ export default {
 
         const performSearch = (query, cat) => {
 
-            axios.get(`http://127.0.0.1:8000/api/v1/search-actor/${query == '' ? undefined : query}/${ cat != '' ? cat : 'undefined' }`)
+            axios.get(`http://gestion.acteur-agricole.bj/api/v1/search-actor/${query == '' ? undefined : query}/${ cat != '' ? cat : 'undefined' }`)
             .then(res => {
 
                 requestsRes.searches = res.data.result

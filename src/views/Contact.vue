@@ -147,7 +147,7 @@ export default {
 
             isLoading.value = true
 
-            axios.post('http://127.0.0.1:8000/api/v1/send-mail',form)
+            axios.post('http://gestion.acteur-agricole.bj/api/v1/send-mail',form)
             .then(res => {
 
                 if (res.data.res.code == 200) {
