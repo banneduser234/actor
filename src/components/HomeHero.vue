@@ -1,7 +1,7 @@
 <template>
     <div class="relative isolate overflow-hidden bg-green-700 py-20 sm:py-32">
 
-      <img src="background_image.png" alt="" class="absolute inset-0 -z-40 h-full w-full object-cover" />
+      <img :src="bgimg" alt="" class="absolute inset-0 -z-40 h-full w-full object-cover" />
       
       <div class="absolute inset-0 -z-40 h-full w-full object-cover bg-gradient-to-t from-green-700/95 to-green-300/25"></div>
 
@@ -28,11 +28,19 @@
 <script>
 
 import SearchHero from "./SearchHero.vue"
+import bgimg from "@/images/background_image.png"
 
 export default {
   name: 'HeroHome',
   components: {
     SearchHero
+  },
+  data () {
+    return {
+
+      bgimg : bgimg
+
+    }
   }
 }
 

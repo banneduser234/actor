@@ -53,7 +53,7 @@ import { onMounted, onUnmounted, reactive,ref } from 'vue';
 import { toast } from 'vue3-toastify';
 import 'vue3-toastify/dist/index.css';
 import axios from "axios";
-import { useRoute } from "vue-router";
+import { useRoute, useRouter } from "vue-router";
 
 export default {
     components : {
@@ -64,17 +64,28 @@ export default {
 
         const router = useRoute()
 
+        const the_router = useRouter()
+
         const requestsRes = reactive({
             searches : []
         })
 
         const makeSearch = e => {
 
+            let query = e.target["query"].value
+
+            the_router.push({
+                name : 'search',
+                query : {q : query.split('+'),cat : ''}
+            }).then(() => the_router.go(0))
+
+            
+
         }
 
         const performSearch = (query, cat) => {
 
-            axios.get(`http://gestion.acteur-agricole.bj/api/v1/search-actor/${query == '' ? undefined : query}/${ cat != '' ? cat : 'undefined' }`)
+            axios.get(`http://127.0.0.1:8000/api/v1/search-actor/${query == '' ? undefined : query}/${ cat != '' ? cat : 'undefined' }`)
             .then(res => {
 
                 requestsRes.searches = res.data.result
@@ -87,7 +98,12 @@ export default {
             performSearch(router.query.q,router.query.cat)
         })
 
-        return {query,makeSearch,requestsRes}
+        return {query,makeSearch,requestsRes,performSearch}
+
+    },
+    methods : {
+
+
 
     }
 }

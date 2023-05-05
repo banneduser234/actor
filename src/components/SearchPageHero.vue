@@ -4,7 +4,7 @@
             <div className="absolute inset-0">
                 <img
                 className="h-full w-full object-cover"
-                src="acteurbg.png"
+                :src="searchherobg"
                 alt=""
                 />
                 <div className="absolute inset-0 bg-green-800 mix-blend-multiply" aria-hidden="true"></div>
@@ -21,6 +21,14 @@
 
 <script>
 
-    
+import searchherobg from  "@/images/acteurbg.png" 
+
+export default {
+    data () {
+        return {
+            searchherobg : searchherobg
+        }
+    }
+}
 
 </script>

@@ -5,7 +5,15 @@
         <l-tile-layer :url="url" :attribution="attribution"></l-tile-layer>
         <l-marker v-for="member in members" :key="member.id" :lat-lng="[member.longitude,member.latitude]">
         
-            <l-popup></l-popup>
+            <l-popup>
+                <div className='my-2'> <b>Nom /  Denomination </b><br/>{{  `${member.first_name} ${member.last_name}` }}</div>
+                                <div className='my-2'>
+                                    <b>Activite</b><br/> {{ member.real_activity == undefined ? 'Aucune donnees' : member.real_activity }}
+                                </div>
+                                <div>
+                                    <b>Affilie a </b><br/>{{  member.affiliate_to == undefined ? 'Aucune donnees' : member.affiliate_to }}}
+                                </div>
+            </l-popup>
         
         </l-marker>
     </l-map>

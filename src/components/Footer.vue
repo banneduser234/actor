@@ -3,7 +3,7 @@
       <h2 id="footer-heading" class="sr-only">Footer</h2>
       <div class="mx-auto max-w-7xl px-6 pb-10 pt-10 sm:pt-10 lg:px-8 lg:pt-10">
         <div class="xl:grid xl:grid-cols-2 xl:gap-8">
-          <div class="mt-10 grid grid-cols-2 gap-8 xl:col-span-2 xl:mt-0">
+          <div class="grid grid-cols-2 gap-8 xl:col-span-2 xl:mt-0">
             <div class="md:grid md:grid-cols-2 md:gap-8">
               <div>
                 <h3 class="text-sm font-semibold leading-6 text-white">Acteurs agricoles</h3>
