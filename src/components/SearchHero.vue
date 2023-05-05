@@ -137,7 +137,7 @@
 
             getCategories () {
 
-                axios.get('http://gestion.acteur-agricole.bj/api/v1/get-categories')
+                axios.get('https://gestion.acteur-agricole.bj/api/v1/get-categories')
                 .then(res => {
 
                     console.log(res.data.categories)

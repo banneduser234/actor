@@ -14,6 +14,7 @@ import { faSearch } from '@fortawesome/free-solid-svg-icons'
 
 import { faAngleRight } from '@fortawesome/free-solid-svg-icons'
 import { faAngleLeft } from '@fortawesome/free-solid-svg-icons'
+import { faArrowLeft } from '@fortawesome/free-solid-svg-icons'
 
 import '../leaflet/leaflet.css/';
 
@@ -24,6 +25,7 @@ import { LMap, LTileLayer, LMarker, LPopup } from '@vue-leaflet/vue-leaflet';
 library.add(faSearch)
 library.add(faAngleRight)
 library.add(faAngleLeft)
+library.add(faArrowLeft)
 
 const app = createApp(App);
 app.component('font-awesome-icon', FontAwesomeIcon)

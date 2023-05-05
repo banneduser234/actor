@@ -5,6 +5,7 @@ import Mentions from "@/views/Mention.vue"
 import Confidentialite from "@/views/Confidentialite.vue"
 import Contact from "@/views/Contact.vue"
 import Search from "@/views/Search.vue"
+import Bg404 from "@/views/404.vue"
 
 const router = createRouter({
   history: createWebHistory(),
@@ -39,6 +40,11 @@ const router = createRouter({
       name: "search",
       component: Search 
     },
+    {
+      path: '/:catchAll(.*)',
+      component: Bg404
+    }
+    
   ]
 });
 
