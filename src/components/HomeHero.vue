@@ -8,12 +8,11 @@
       <div class="mx-auto max-w-7xl px-6 lg:px-8">
         <div class="mx-auto max-w-2xl lg:mx-0">
           <h2 class="text-4xl font-bold tracking-tight text-white sm:text-6xl">ACTEURS AGRICOLES DU BENIN</h2>
-          <p class="mt-6 text-xl leading-8 text-gray-300">
-            La Chambre Nationale d’Agriculture en route pour mettre en place
-                un système d’information de marché grâce à l’appui technique du
-                Ministère de l’Agriculture et l’appui financier du PARASEP à travers
-                un financement de l’Union européenne et de l’Agence f rançaise de
-                Développement.
+          <p class="mt-6 text-xl leading-8 text-gray-200">
+            Découvrez les acteurs agricoles vérifiés du Bénin sur notre plateforme en ligne, 
+            acteur-agricole.bj, lancée par la Chambre Nationale d’Agriculture du Bénin. Rejoignez 
+            notre communauté pour améliorer votre activité agricole et 
+            trouver des opportunités de financement, de formation et d’événements du secteur.
           </p>
         </div>
       </div>

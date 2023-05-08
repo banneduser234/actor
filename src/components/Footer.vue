@@ -79,9 +79,9 @@
       { name: 'Signaler un probleme', href: '/contact' },
     ],
     company: [
-      { name: 'Mensions legales', href: '/mentions-legales' },
+      { name: 'Mentions legales', href: '/mentions-legales' },
       { name: 'Politique de confidentialité', href: '/politique-de-confidentialite' },
-      { name: 'CGU', href: '/cgu' },
+      { name: 'Termes et conditions', href: '/cgu' },
     ]
   }
 

@@ -2,7 +2,7 @@
 
     <SearchPageHero></SearchPageHero>
 
-    <ResultVue :searchRes="requestsRes.searches"/>
+    <ResultVue v-if="!loader" :searchRes="requestsRes.searches"/>
 
     <section class='mx-auto max-w-7xl px-6 lg:px-8 py-6 lg:py-8'>
 
@@ -43,6 +43,8 @@
 
     </section>
 
+    <Loader v-if="loader"/>
+
 </template>
 
 <script>
@@ -54,17 +56,20 @@ import { toast } from 'vue3-toastify';
 import 'vue3-toastify/dist/index.css';
 import axios from "axios";
 import { useRoute, useRouter } from "vue-router";
+import Loader from '@/components/Loader.vue'
 
 export default {
     components : {
-        SearchPageHero, ResultVue
-    },
+        SearchPageHero, ResultVue, Loader
+    }, 
     setup () {
         const query = ref('')
 
         const router = useRoute()
 
         const the_router = useRouter()
+
+        const loader = ref(false)
 
         const requestsRes = reactive({
             searches : []
@@ -85,10 +90,15 @@ export default {
 
         const performSearch = (query, cat) => {
 
+            loader.value = true
+
+
             axios.get(`https://gestion.acteur-agricole.bj/api/v1/search-actor/${query == '' ? undefined : query}/${ cat != '' ? cat : 'undefined' }`)
             .then(res => {
 
                 requestsRes.searches = res.data.result
+
+                loader.value = false
 
             })
 
@@ -98,7 +108,7 @@ export default {
             performSearch(router.query.q,router.query.cat)
         })
 
-        return {query,makeSearch,requestsRes,performSearch}
+        return {query,makeSearch,requestsRes,performSearch,loader}
 
     },
     methods : {

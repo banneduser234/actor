@@ -26,7 +26,7 @@ import Map from '../components/Map.vue';
 export default {
   name: 'Accueil',
   components: {
-    HomeHero,Map
+    HomeHero, Map
   }
 }
 
