@@ -9,7 +9,7 @@
                 <h3 class="text-sm font-semibold leading-6 text-white">Acteurs agricoles</h3>
                 <ul role="list" class="mt-6 space-y-4">
                   <li v-for="item in navigation.acteurs" :key="item.name">
-                    <router-link :to="item.href" class="text-sm leading-6 text-gray-100">{{ item.name }}</router-link>
+                    <a :href="item.href" class="text-sm leading-6 text-gray-100">{{ item.name }}</a>
                   </li>
                 </ul>
               </div>
@@ -17,7 +17,7 @@
                 <h3 class="text-sm font-semibold leading-6 text-white">Support</h3>
                 <ul role="list" class="mt-6 space-y-4">
                   <li v-for="item in navigation.support" :key="item.name">
-                    <router-link :to="item.href" class="text-sm leading-6 text-gray-100">{{ item.name }}</router-link>
+                    <a :href="item.href" class="text-sm leading-6 text-gray-100">{{ item.name }}</a>
                   </li>
                 </ul>
               </div>
@@ -27,7 +27,7 @@
                 <h3 class="text-sm font-semibold leading-6 text-white">En savoir plus</h3>
                 <ul role="list" class="mt-6 space-y-4">
                   <li v-for="item in navigation.company" :key="item.name">
-                    <router-link :to="item.href" class="text-sm leading-6 text-gray-100">{{ item.name }}</router-link>
+                    <a :href="item.href" class="text-sm leading-6 text-gray-100">{{ item.name }}</a>
                   </li>
                 </ul>
               </div>
@@ -79,7 +79,7 @@
       { name: 'Signaler un probleme', href: '/contact' },
     ],
     company: [
-      { name: 'Mentions legales', href: '/mentions-legales' },
+      { name: 'Mentions légales', href: '/mentions-legales' },
       { name: 'Politique de confidentialité', href: '/politique-de-confidentialite' },
       { name: 'Termes et conditions', href: '/cgu' },
     ]

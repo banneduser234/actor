@@ -26,9 +26,9 @@
                     <div className="px-4 sm:px-6 lg:px-8">
                         <div className="sm:flex sm:items-center">
                             <div className="sm:flex-auto">
-                            <h1 className="text-base font-semibold leading-6 text-gray-900">Resultats de recherche</h1>
+                            <h1 className="text-base font-semibold leading-6 text-gray-900">"{{ query == '' ? category : query }}"</h1>
                             <p className="mt-2 text-sm text-gray-700">
-                                Un total de {{ searchRes.length }} acteur{{  searchRes.length == 1 ? '' : 's' }}
+                                {{ searchRes.length }} resultat{{  searchRes.length == 1 ? '' : 's' }}
                             </p>
                             </div>
                             <div className="mt-4 sm:ml-16 sm:mt-0 sm:flex-none">
@@ -40,34 +40,68 @@
                                     <table className="min-w-full divide-y divide-gray-300">
                                         <thead>
                                             <tr className="divide-x divide-gray-200">
-                                                <th scope="col" className="py-3.5 pl-4 pr-4 text-left text-sm font-semibold text-gray-900 sm:pl-0">
-                                                    Nom / Denomination
+                                                <th scope="col" className="py-3.5 pl-4 pr-4 text-left text-lg font-extrabold text-gray-900 sm:pl-0">
+                                                    Nom / Dénomination
                                                 </th>
-                                                <th scope="col" className="py-3.5 pl-4 pr-4 text-left text-sm font-semibold text-gray-900 sm:pr-0">
-                                                    Activite
+                                                <th scope="col" className="py-3.5 pl-4 pr-4 text-left text-lg font-extrabold text-gray-900 sm:pr-0">
+                                                    Activité
                                                 </th>
-                                                <th scope="col" className="px-4 py-3.5 text-left text-sm font-semibold text-gray-900">
+                                                <th scope="col" className="px-4 py-3.5 text-left text-lg font-extrabold text-gray-900">
                                                     Commune
                                                 </th>
-                                                <th scope="col" className="py-3.5 pl-4 pr-4 text-left text-sm font-semibold text-gray-900 sm:pr-0">
-                                                    Affilie a
+                                                <th scope="col" className="py-3.5 pl-4 pr-4 text-left text-lg font-extrabold text-gray-900 sm:pr-0">
+                                                    Affilié a
                                                 </th>
-                                                <th scope="col" className="py-3.5 pl-4 pr-4 text-left text-sm font-semibold text-gray-900 sm:pr-0">
+                                                <th scope="col" className="py-3.5 pl-4 pr-4 text-left text-lg font-extrabold text-gray-900 sm:pr-0">
                                                     Action
                                                 </th>
                                             </tr>
                                         </thead>
                                         <tbody className="divide-y divide-gray-200 bg-white">
                                             <tr v-for="res in chuncked_array[tab_index]" :key="res.id" className="divide-x divide-gray-200">
-                                                <td className="whitespace-nowrap py-4 pl-4 pr-4 text-sm font-medium text-gray-900 sm:pl-0">
+                                                <td className="whitespace-nowrap py-4 pl-4 pr-4 text-sm  text-gray-900 sm:pl-0">
+                                                    <!-- font-medium -->
                                             {{  res.last_name }} {{ res.first_name }}
                                                 </td>
                                                 <td className="whitespace-nowrap py-4 pl-4 pr-4 text-sm text-gray-500 sm:pr-0">{{ res.activity_primary != null ? res.activity_primary.name : 'Pas indique' }}</td>
                                                 <td className="whitespace-nowrap p-4 text-sm text-gray-500">{{ res.commune != null ? res.commune.name : 'Pas indique' }}</td>
-                                                <td className="whitespace-nowrap py-4 pl-4 pr-4 text-sm text-gray-500 sm:pr-0">{{ res.user.organisation_name != null ? res.user.organisation_name : 'Pas indique' }}</td>
+                                                <td className="whitespace-nowrap py-4 pl-4 pr-4 text-sm text-gray-500 sm:pr-0">{{ res.user != null ? res.user.organisation_name : 'Pas indique' }}</td>
                                                 <td className="whitespace-nowrap py-4 pl-4 pr-4 text-sm text-gray-500 sm:pr-0">
 
-                                                    <a href="" class="rounded bg-green-700 px-2 py-2 text-md font-semibold text-white shadow-sm hover:bg-green-700 focus-visible:outline focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-indigo-600 block w-full text-center">Voir les offres</a>
+                                                    <a @click.prevent="openBox(`box${res.id}`)" href="" class="rounded bg-green-700 px-2 py-2 text-md font-semibold text-white shadow-sm hover:bg-green-700 focus-visible:outline focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-indigo-600 block w-full text-center">Voir les offres</a>
+
+                                                    <!-- The button that triggers the dialog -->
+
+                                                    <!-- <div class="dialog-box">
+                                                        <div class="dialog-content">
+                                                        <button class="close-button">Close</button>
+                                                        <p>{{ rowData }}</p>
+                                                        </div>
+                                                    </div> -->
+
+                                                    <div @click="triggerClose($event,`box${res.id}`)" :id="`box${res.id}`" class="bg-slate-800 bg-opacity-70 fixed top-0 left-0 bottom-0 right-0 flex items-center justify-center cursor-pointer hidden">
+
+                                                        <div class="w-5/12 bg-white min-h-[100px] rounded cursor-default p-5">
+
+                                                            <div v-if="res.offers.length == 0" class="rounded-md bg-blue-50 p-4 mt-2">
+                                                            
+                                                                <div class="flex">
+
+                                                                    <div class="flex-shrink-0">
+                                                                        <InformationCircleIcon class="h-5 w-5 text-blue-400" aria-hidden="true" />
+                                                                    </div>
+                                                                    <div class="ml-3 flex-1 md:flex md:justify-between">
+                                                                        <p class="text-sm text-blue-700">Aucune offre disponible pour cet acteur</p>
+                                                                    </div>
+
+                                                                </div>
+                                                            
+                                                            </div>
+                                                            
+                                                        </div>
+
+                                                    </div>
+
 
                                                 </td>
                                             </tr>
@@ -92,6 +126,7 @@
                             </div>
 
                             </div>
+                            <div class="">Résultats non pertinents ? <a href="/contact" class="text-blue-700 underline">Contactez nous</a> </div>
                         </div>
 
                     </article>
@@ -106,6 +141,8 @@ import { ref, getCurrentInstance, watchEffect } from 'vue';
 
 import { ExclamationTriangleIcon } from '@heroicons/vue/20/solid'
 
+import { InformationCircleIcon } from '@heroicons/vue/20/solid'
+
 
 
     export default {
@@ -113,6 +150,14 @@ import { ExclamationTriangleIcon } from '@heroicons/vue/20/solid'
         props : {
             searchRes : {
                 type : Array,
+                required : true
+            },
+            query : {
+                type : String,
+                required : true
+            },
+            category : {
+                type : String,
                 required : true
             }
         },
@@ -135,6 +180,22 @@ import { ExclamationTriangleIcon } from '@heroicons/vue/20/solid'
             call_previous () {
                 if(this.tab_index == 0) return;
                 this.tab_index -= 1
+            },
+            closeBox (id) {
+                document.getElementById(id).classList.add('hidden')
+            },
+            openBox (id) {
+                document.getElementById(id).classList.remove('hidden')
+            },
+            triggerClose (e,id) {
+
+                const element = document.getElementById(id)
+
+                if (e.target.matches(`#${id}`))
+                {
+                    element.classList.add('hidden')
+                }
+
             }
         },
 
@@ -147,7 +208,7 @@ import { ExclamationTriangleIcon } from '@heroicons/vue/20/solid'
         },
 
         components : {
-            ExclamationTriangleIcon
+            ExclamationTriangleIcon, InformationCircleIcon
         },
 
         mounted () {
@@ -170,35 +231,6 @@ import { ExclamationTriangleIcon } from '@heroicons/vue/20/solid'
 
             },200)
         },
-
-        // setup (props) {
-
-        //     const results40 = ref([])
-
-        //     const tab_index = ref(0)
-
-        //     const wholeTab = ref(null)
-
-        //     watchEffect(() => {
-        //         if (props.searchRes.length > 0) {
-        //             wholeTab.value = props.searchRes
-        //             console.log(wholeTab)
-        //         }
-        //     })
-
-        //     const resDispatch = () => {
-        //         return Array.from({ length: Math.ceil(wholeTab.length / 20) }, (_, index) =>
-        //             wholeTab.slice(index * 20, index * 20 + 20)
-        //         )
-        //     }
-
-        //     // const instance = getCurrentInstance();
-        //     // instance.results40 = results40;
-        //     // instance.resDispatch = resDispatch
-
-        //     return {wholeTab,results40,tab_index,resDispatch}
-
-        // },
 
     }
 

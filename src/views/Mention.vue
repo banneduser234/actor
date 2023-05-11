@@ -120,4 +120,26 @@
 </template>
 
 <script>
+
+import { watch, computed, onMounted } from 'vue';
+import { useRoute } from 'vue-router';
+
+export default {
+    setup () {
+        const route = useRoute();
+
+        const pageTitle = computed(() => {
+        return route.meta.title || 'Default Page Title';
+        });
+
+        onMounted(() => {
+        document.title = pageTitle.value;
+        });
+
+        watch(pageTitle, (newTitle) => {
+        document.title = newTitle;
+        });
+    }
+}
+
 </script>

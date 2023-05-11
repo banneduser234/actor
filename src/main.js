@@ -15,6 +15,10 @@ import { faSearch } from '@fortawesome/free-solid-svg-icons'
 import { faAngleRight } from '@fortawesome/free-solid-svg-icons'
 import { faAngleLeft } from '@fortawesome/free-solid-svg-icons'
 import { faArrowLeft } from '@fortawesome/free-solid-svg-icons'
+import { faCaretRight } from '@fortawesome/free-solid-svg-icons'
+import { faCircle } from '@fortawesome/free-solid-svg-icons'
+import { faCalendar } from '@fortawesome/free-solid-svg-icons'
+import { faCalendarAlt } from '@fortawesome/free-solid-svg-icons'
 
 import '../leaflet/leaflet.css/';
 
@@ -26,6 +30,9 @@ library.add(faSearch)
 library.add(faAngleRight)
 library.add(faAngleLeft)
 library.add(faArrowLeft)
+library.add(faCaretRight)
+library.add(faCircle)
+library.add(faCalendarAlt)
 
 const app = createApp(App);
 app.component('font-awesome-icon', FontAwesomeIcon)

@@ -104,12 +104,13 @@
 </template>
 
 <script>
-import { defineComponent, ref } from 'vue'
+import { defineComponent, ref, computed, watch, onMounted } from 'vue'
 import { EnvelopeIcon, PhoneIcon } from '@heroicons/vue/24/outline'
 import Loader from "@/components/Loader.vue"
 import axios from 'axios'
 import { toast } from 'vue3-toastify';
 import 'vue3-toastify/dist/index.css';
+import { useRoute } from 'vue-router';
 
 export default {
     components : {
@@ -129,6 +130,20 @@ export default {
     setup () {
         
         const isLoading = ref(false)
+
+        const route = useRoute();
+
+        const pageTitle = computed(() => {
+        return route.meta.title || 'Default Page Title';
+        });
+
+        onMounted(() => {
+        document.title = pageTitle.value;
+        });
+
+        watch(pageTitle, (newTitle) => {
+        document.title = newTitle;
+        });
 
         const reset_form = e => {
 

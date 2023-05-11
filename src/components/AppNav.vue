@@ -17,7 +17,7 @@
           <a v-for="item in navigation" :key="item.name" :href="item.href" class="text-sm font-semibold leading-6 text-gray-50">{{ item.name }}</a>
         </div> -->
         <div class="hidden lg:flex lg:flex-1 lg:justify-end">
-          <router-link to="/rechercher" class="text-md font-semibold leading-6 bg-white text-green-700 block p-6"> <font-awesome-icon icon="fa-solid fa-search" /> Rechercher</router-link>
+          <a href="/rechercher" class="text-md font-semibold leading-6 bg-white text-green-700 block p-6"> <font-awesome-icon icon="fa-solid fa-search" /> Rechercher</a>
         </div>
       </nav>
       <Dialog as="div" class="lg:hidden" @close="mobileMenuOpen = false" :open="mobileMenuOpen">

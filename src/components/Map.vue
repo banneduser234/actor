@@ -1,7 +1,7 @@
 
 <template>
 
-    <l-map style="height: 300px;width: 100%;" :zoom="zoom" :center="center" :use-global-leaflet="false">
+    <l-map style="height: 300px;width: 100%;" :zoom="zoom" :center="center" :use-global-leaflet="false" class="m-0 z-0">
         <l-tile-layer :url="url" :attribution="attribution"></l-tile-layer>
         <l-marker v-for="member in members" :key="member.id" :lat-lng="[member.longitude,member.latitude]">
         

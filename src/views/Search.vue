@@ -2,8 +2,6 @@
 
     <SearchPageHero></SearchPageHero>
 
-    <ResultVue v-if="!loader" :searchRes="requestsRes.searches"/>
-
     <section class='mx-auto max-w-7xl px-6 lg:px-8 py-6 lg:py-8'>
 
         <article class=''>
@@ -43,6 +41,10 @@
 
     </section>
 
+    <ResultVue v-if="!loader && requestsRes.searches.length > 0" :searchRes="requestsRes.searches" :query="query_prop" :category="category"/>
+
+        <!-- {{ JSON.stringify(requestsRes.searches) }} -->
+
     <Loader v-if="loader"/>
 
 </template>
@@ -51,7 +53,7 @@
 
 import SearchPageHero from "@/components/SearchPageHero.vue"
 import ResultVue from "@/components/ResultVue.vue"
-import { onMounted, onUnmounted, reactive,ref } from 'vue';
+import { onMounted, onUnmounted, reactive,ref, computed, watch } from 'vue';
 import { toast } from 'vue3-toastify';
 import 'vue3-toastify/dist/index.css';
 import axios from "axios";
@@ -63,7 +65,9 @@ export default {
         SearchPageHero, ResultVue, Loader
     }, 
     setup () {
-        const query = ref('')
+        const query = ref(null)
+
+        const category = ref(null)
 
         const router = useRoute()
 
@@ -74,6 +78,20 @@ export default {
         const requestsRes = reactive({
             searches : []
         })
+
+        const route = useRoute();
+
+        const pageTitle = computed(() => {
+        return route.meta.title || 'Default Page Title';
+        });
+
+        onMounted(() => {
+        document.title = pageTitle.value;
+        });
+
+        watch(pageTitle, (newTitle) => {
+        document.title = newTitle;
+        });
 
         const makeSearch = e => {
 
@@ -98,7 +116,22 @@ export default {
 
                 requestsRes.searches = res.data.result
 
-                loader.value = false
+                if(cat != '')
+                {
+
+                    console.log(`${cat}-${typeof(cat)}`)
+
+                    axios.get(`https://gestion.acteur-agricole.bj/api/v1/get-category/${cat}`)
+                    .then(res => {
+
+                        category.value = res.data.category[0].name
+
+                        loader.value = false
+
+                    })
+
+                }
+                else { loader.value = false }
 
             })
 
@@ -108,7 +141,9 @@ export default {
             performSearch(router.query.q,router.query.cat)
         })
 
-        return {query,makeSearch,requestsRes,performSearch,loader}
+        const query_prop = router.query.q
+
+        return {query,makeSearch,requestsRes,performSearch,loader,query_prop, category, pageTitle}
 
     },
     methods : {
