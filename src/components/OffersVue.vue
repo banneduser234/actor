@@ -1,7 +1,5 @@
 <template>
 
-    <div v-for="line in offers"></div>
-
                 <section className='mx-auto max-w-7xl px-6 lg:px-0 py-6 lg:py-8'>
 
                     <article className=''>
@@ -10,42 +8,45 @@
         
                         <div className="mt-8 flow-root">
                             <div className="-mx-4 -my-2 overflow-x-auto sm:-mx-6 lg:-mx-8">
-                                <div className="min-w-full py-2 align-middle sm:px-6 lg:px-8 bg-gray-100 rounded-lg">
+                                <div className="min-w-full py-2 align-middle sm:px-6 px-4 lg:px-8 rounded-lg" style="background-color: rgb(248, 246, 246);">
                                     
                                     <!-- offers here -->
 
-                                    <div v-for="line in chuncked_array[tab_index]" :class="`grid grid-cols-4 items-center py-5 ${chuncked_array[tab_index].length != chuncked_array[tab_index].indexOf(line) + 1 ? 'border-2 border-x-0 border-t-0 border-gray-300' : ''}`">
+                                    <div v-for="line in chuncked_array[tab_index]" :class="`lg:grid lg:grid-cols-3 grid grid-cols-1 items-center py-5 ${chuncked_array[tab_index].length != chuncked_array[tab_index].indexOf(line) + 1 ? 'border-2 border-x-0 border-t-0 border-gray-300' : ''}`">
                                         
-                                        <div class="">
+                                        <div class="lg:my-0 my-3">
 
-                                            <div class="text-center">
+                                            <div class="lg:text-center">
                                                 <img :src="`http://gestion.acteur-agricole.bj/uploads/filieres/${line.filiere.icon}`" alt="" class="w-10 inline-block mr-5"> 
                                                 <!-- <span>{{ line.filiere.name }}</span> -->
                                             </div>
 
                                         </div>
-                                        <div class="text-start">
+                                        <div class="text-start lg:my-0 my-3">
 
                                             <div class="">
-                                                <font-awesome-icon :icon="['fas', 'caret-right']"  class="text-lg mr-4 text-green-500"/> {{ line.value_chain.name }} ({{ line.quality_r.name }})
+                                                <font-awesome-icon :icon="['fas', 'caret-right']"  class="text-lg mr-4 text-blue-500"/> {{ line.value_chain.name }} ({{ line.quality_r.name }})
                                             </div>
 
                                             <div class="">
-                                                <font-awesome-icon :icon="['fas', 'caret-right']" class="text-lg mr-4 text-orange-500"/> {{ line.quantity }}
+                                                <font-awesome-icon :icon="['fas', 'square']" class="text-[10.5px] mr-4 text-green-500"/> {{ line.quantity }}
+                                            </div>
+
+                                            <div class="text-xs mt-3 text-gray-600">
+                                                <i class="">
+                                                    <!-- <font-awesome-icon :icon="['fas', 'calendar-alt']" class="text-xs mr-4 text-blue-600"/>  -->
+                                                    Publié le 
+                                                    {{ toDate(line.created_at) }}
+                                                </i>
                                             </div>
 
                                         </div>
-                                        
-                                        <div class="text-center">
-                                            <i class="">
-                                                <font-awesome-icon :icon="['fas', 'calendar-alt']" class="text-lg mr-4 text-blue-600"/> Publié le 
-                                                {{ toDate(line.created_at) }}
-                                            </i>
-                                        </div>
 
-                                        <div class="text-center">
+                                        <div class="lg:text-center">
 
-                                            <button class="rounded bg-green-700 py-2 text-sm font-semibold text-white shadow-sm hover:bg-green-600 focus-visible:outline focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-indigo-600 block w-full text-center">Je suis intéressé</button>
+                                            <a  class="rounded bg-green-700 text-sm font-semibold text-white shadow-sm hover:bg-green-600 focus-visible:outline focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-indigo-600 text-center uppercase lg:w-10 lg:h-10 inline-flex items-center justify-center mr-5"><font-awesome-icon :icon="['fas', 'phone']"/></a>
+
+                                            <a class="rounded bg-blue-700 text-sm font-semibold text-white shadow-sm hover:bg-blue-600 focus-visible:outline focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-indigo-600 text-center uppercase lg:w-10 lg:h-10 inline-flex items-center justify-center"><font-awesome-icon :icon="['fas', 'envelope']" /></a>
 
                                         </div>
                                         
