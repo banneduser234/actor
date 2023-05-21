@@ -44,9 +44,9 @@
 
                                         <div class="lg:text-center">
 
-                                            <a  class="rounded bg-green-700 text-sm font-semibold text-white shadow-sm hover:bg-green-600 focus-visible:outline focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-indigo-600 text-center uppercase lg:w-10 lg:h-10 inline-flex items-center justify-center mr-5"><font-awesome-icon :icon="['fas', 'phone']"/></a>
+                                            <a :href="`tel:${line.member != null ? line.member.user.phone : ''}`" class="rounded bg-green-700 text-sm font-semibold text-white shadow-sm hover:bg-green-600 focus-visible:outline focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-indigo-600 text-center uppercase w-10 h-10 inline-flex items-center justify-center mr-5"><font-awesome-icon :icon="['fas', 'phone']"/></a>
 
-                                            <a class="rounded bg-blue-700 text-sm font-semibold text-white shadow-sm hover:bg-blue-600 focus-visible:outline focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-indigo-600 text-center uppercase lg:w-10 lg:h-10 inline-flex items-center justify-center"><font-awesome-icon :icon="['fas', 'envelope']" /></a>
+                                            <a :href="`mailto:${line.member != null ? line.member.user.email : ''}`" class="rounded bg-blue-700 text-sm font-semibold text-white shadow-sm hover:bg-blue-600 focus-visible:outline focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-indigo-600 text-center uppercase w-10 h-10 inline-flex items-center justify-center"><font-awesome-icon :icon="['fas', 'envelope']" /></a>
 
                                         </div>
                                         

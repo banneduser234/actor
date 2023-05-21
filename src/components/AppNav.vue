@@ -13,9 +13,9 @@
             <Bars3Icon class="h-6 w-6 text-white" aria-hidden="true" />
           </button>
         </div>
-        <!-- <div class="hidden lg:flex lg:gap-x-12">
+        <div class="hidden lg:flex lg:gap-x-12">
           <a v-for="item in navigation" :key="item.name" :href="item.href" class="text-sm font-semibold leading-6 text-gray-50">{{ item.name }}</a>
-        </div> -->
+        </div>
         <div class="hidden lg:flex lg:flex-1 lg:justify-end">
           <a href="/rechercher" class="text-md font-semibold leading-6 bg-white text-green-700 block p-6"> <font-awesome-icon icon="fa-solid fa-search" /> Rechercher</a>
         </div>
@@ -35,9 +35,9 @@
           </div>
           <div class="mt-6 flow-root">
             <div class="-my-6 divide-y divide-gray-500/10">
-              <!-- <div class="space-y-2 py-6">
-                <a v-for="item in navigation" :key="item.name" :href="item.href" class="-mx-3 block rounded-lg px-3 py-2 text-base font-semibold leading-7 text-gray-900 hover:bg-gray-50">{{ item.name }}</a>
-              </div> -->
+              <div class="space-y-2 py-6">
+                <a v-for="item in navigation" :key="item.name" :href="item.href" class="-mx-3 block rounded-lg px-3 py-2 text-base font-semibold leading-7 text-gray-50">{{ item.name }}</a>
+              </div>
               <div class="py-6">
                 <a href="/rechercher" class="-mx-3 block rounded-lg px-3 py-2.5 text-base font-semibold leading-7 bg-gray-50 hover:bg-gray-50"><font-awesome-icon icon="fa-solid fa-search" /> Rechercher</a>
               </div>
@@ -55,10 +55,10 @@
   import logoActor from "@/images/logo_actor.png"
   
   const navigation = [
-    { name: 'Product', href: '#' },
-    { name: 'Features', href: '#' },
-    { name: 'Marketplace', href: '#' },
-    { name: 'Company', href: '#' },
+    { name: 'Accueil', href: '/' },
+    { name: 'Offres disponibles', href: '/offres' },
+    { name: 'Contacts', href: '/contact' },
+    { name: 'A propos', href: '/mentions-legales' },
   ]
   
   const mobileMenuOpen = ref(false)

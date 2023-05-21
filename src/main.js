@@ -22,6 +22,7 @@ import { faCalendarAlt } from '@fortawesome/free-solid-svg-icons'
 import { faSquare } from '@fortawesome/free-solid-svg-icons'
 import { faPhone } from '@fortawesome/free-solid-svg-icons'
 import { faEnvelope } from '@fortawesome/free-solid-svg-icons'
+import { faList } from '@fortawesome/free-solid-svg-icons'
 import '../leaflet/leaflet.css/';
 
 import { LMap, LTileLayer, LMarker, LPopup } from '@vue-leaflet/vue-leaflet';
@@ -38,6 +39,7 @@ library.add(faCalendarAlt)
 library.add(faSquare)
 library.add(faPhone)
 library.add(faEnvelope)
+library.add(faList)
 
 const app = createApp(App);
 app.component('font-awesome-icon', FontAwesomeIcon)

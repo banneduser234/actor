@@ -22,6 +22,12 @@
             Dernières offres <span class='absolute inline-block border-8 z-30 border-green-700 bottom-0 left-1/2 transform -translate-x-1/2 translate-y-1/3'></span>
         </header>
 
+        <section class="my-8 clear-both after:table">
+          <a href="/offres" class="rounded bg-blue-600 text-sm px-8 py-2 font-semibold text-white shadow-sm hover:bg-blue-600 focus-visible:outline focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-indigo-600 text-center lg:h-10 inline-flex items-center justify-center float-right">
+            <font-awesome-icon icon="fas fa-list"></font-awesome-icon> <span class="inline-block ml-4">Voir tout</span>
+          </a>
+        </section>
+
         <article class="">
           <!-- {{ JSON.stringify(offers) }} -->
           <OffersVue v-if="offers.length > 0" :offers="offers"/>
@@ -67,7 +73,7 @@ export default {
 
     const fetch_offers = () => {
 
-      axios.get('https://gestion.acteur-agricole.bj/api/v1/get-offers')
+      axios.get('https://gestion.acteur-agricole.bj/api/v1/get-ten-offers')
       .then(res => {
 
         offers.value = res.data.offers
